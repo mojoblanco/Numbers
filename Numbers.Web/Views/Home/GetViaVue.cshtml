@@ -1,0 +1,39 @@
+﻿
+@{
+    ViewData["Title"] = "Get Stufff";
+}
+<h2>@ViewData["Title"]</h2>
+
+<p>Get Data Via Vue</p>
+
+<div id="app">
+  {{ message }}
+	
+</div>
+
+
+<script>
+	
+	var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello Vue!'
+      },
+	  mounted: function() {
+        this.message = "jd";
+            var config = {
+              headers: {'Access-Control-Allow-Origin': '*'}
+            };
+          axios.get('http://localhost:5000/api/number', config)
+            .then(response => {
+              console.log(response)
+            })
+            .catch(e => {
+              console.log("Error occured")
+            })
+        }
+
+      
+    
+    })
+</script>
